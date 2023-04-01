@@ -112,6 +112,10 @@ else
     ccflags-y += -DCFG_SUPPORT_AEE=0
 endif
 
+ifneq ($(filter "CONSYS_6768",$(CONFIG_MTK_COMBO_CHIP)),)
+    ccflags-y += -DCFG_FORCE_5G_SUPPORT
+endif
+
 # Disable ASSERT() for user load, enable for others
 ccflags-y += -DBUILD_QA_DBG=0
 

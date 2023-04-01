@@ -4442,11 +4442,13 @@ uint32_t wlanLoadManufactureData(IN struct ADAPTER
 
 	/* 3. Check if needs to support 5GHz */
 	if (prRegInfo->ucEnable5GBand) {
+#ifndef CFG_FORCE_5G_SUPPORT
 		/* check if it is disabled by hardware */
 		if (prAdapter->fgIsHw5GBandDisabled
 		    || prRegInfo->ucSupport5GBand == 0)
 			prAdapter->fgEnable5GBand = FALSE;
 		else
+#endif
 			prAdapter->fgEnable5GBand = TRUE;
 	} else
 		prAdapter->fgEnable5GBand = FALSE;
